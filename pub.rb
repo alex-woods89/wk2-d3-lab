@@ -9,11 +9,22 @@ class Pub
     @drinks = []
   end
 
-  def remove_drink(drink_bought)
-    for drink in @drinks
-      if drink == drink_bought
-        @drinks.delete(drink)
-      end
-    end
+  def drinks_length
+    return @drinks.length
   end
+
+  def add_drink(drink)
+    return @drinks.push(drink)
+  end
+
+  def sell_drink
+    @drinks.pop
+  end
+
+  def add_to_till(drink_price)
+     return @till += drink_price
+  end
+
+
+
   end
