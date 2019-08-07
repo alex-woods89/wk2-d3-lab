@@ -8,10 +8,8 @@ require_relative("../customer")
 class PubTest < MiniTest::Test
 
   def setup
-    @drink1 = Drink.new("Wine", 3)
-    @drink2 = Drink.new("Whisky", 5)
-    @drink3 = Drink.new("Beer", 4)
-    @customer1 = Customer.new("Bob", 20)
+    @drink1 = Drink.new("Wine", 3, 5)
+    @customer1 = Customer.new("Bob", 20, 5, 12)
     @pub = Pub.new("The coders arms", 100, [])
 
   end
@@ -28,21 +26,28 @@ class PubTest < MiniTest::Test
     assert_equal("Wine", @drink1.name)
   end
 
-   def test_number_of_drink_starts_zero
-     assert_equal(0, @pub.drinks_length)
-   end
+  def test_number_of_drink_starts_zero
+    assert_equal(0, @pub.drinks_length)
+  end
 
-   def test_can_add_drink
-     drink = @drink1
-     assert_equal(1, @pub.add_drink(drink).count)
-   end
-   def test_add_to_till
-       drink_price  = @drink2.price
-       assert_equal(105, @pub.add_to_till(drink_price))
-   end
-  # def test_sell_drink
-  #   drink = @drink1
-  #   @pub.add_drink(drink)
-  # end
+  def test_can_add_drink
+    drink = @drink1
+    assert_equal(1, @pub.add_drink(drink).count)
+  end
 
+  def test_add_to_till
+    drink_price  = @drink1.price
+    assert_equal(103, @pub.add_to_till(drink_price))
+  end
+
+
+  def test_check_age
+    age = @customer1.age
+    assert_equal(false, @pub.check_age(age))
+  end
+
+  def test_drunkenness_level
+    drunkenness = @customer1.drunkenness
+  assert_equal(true, @pub.drunkenness_level(drunkenness))
+end
 end

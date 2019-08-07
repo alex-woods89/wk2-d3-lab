@@ -25,6 +25,11 @@ class Pub
      return @till += drink_price
   end
 
-
-
+  def check_age(age)
+    age >= 18 
   end
+
+def drunkenness_level(drunkenness)
+  drunkenness <= 15
+end
+end
